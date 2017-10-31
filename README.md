@@ -22,4 +22,8 @@ $ scripts/kana2nums しこく
 $ scripts/kana2nums にしみなみ
 24373
 
+$ scripts/kana2nums ががが
+
+[エラー] 1文字目(が)が翻訳できませんでした。
+
 ```
