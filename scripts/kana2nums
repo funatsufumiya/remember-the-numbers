@@ -1,0 +1,142 @@
+#!/usr/bin/env node
+
+const dict = {
+	"い": 1,
+	"いん": 1,
+	"お": 0,
+	"おん": 0,
+	"きゅう": 9,
+	"きゅー": 9,
+	"く": 9,
+	"ぐ": 9,
+	"こ": 5,
+	"こう": 5,
+	"こー": 5,
+	"ご": 5,
+	"ごう": 5,
+	"ごー": 5,
+	"さ": 3,
+	"さー": 3,
+	"さっ": 3,
+	"さん": 3,
+	"し": 4,
+	"しー": 4,
+	"しっ": 4,
+	"しん": 4,
+	"じ": 4,
+	"じー": 4,
+	"じっ": 4,
+	"じん": 4,
+	"じゅう": 1,
+	"じゅー": 1,
+	"つ": 2,
+	"と": 10,
+	"とっ": 10,
+	"とう": 10,
+	"とー": 10,
+	"ど": 10,
+	"どっ": 10,
+	"どう": 10,
+	"どー": 10,
+	"な": 7,
+	"なん": 7,
+	"に": 2,
+	"にー": 2,
+	"にい": 2,
+	"にっ": 2,
+	"にん": 2,
+	"は": 8,
+	"はー": 8,
+	"はっ": 8,
+	"ぱ": 8,
+	"ぱー": 8,
+	"ぱっ": 8,
+	"ば": 8,
+	"ばー": 8,
+	"ふ": 2,
+	"ぷ": 2,
+	"ぶ": 2,
+	"み": 3,
+	"みー": 3,
+	"みん": 3,
+	"む": 6,
+	"や": 8,
+	"やっ": 8,
+	"やー": 8,
+	"よ": 4,
+	"よっ": 4,
+	"よん": 4,
+	"る": 6,
+	"れ": 0,
+	"れい": 0,
+	"れー": 0,
+	"れん": 0,
+	"ろ": 6,
+	"ろう": 6,
+	"ろー": 6,
+	"わ": 0,
+	"わー": 0,
+	"ん": 0,
+	"ー": 0,
+};
+
+var args = process.argv.slice(2);
+// console.log(args);
+
+var kana = args[0];
+// console.log(kana);
+
+var out = "";
+var s_prev = "";
+var s = kana;
+var succeeded = false;
+var index = 0;
+while(true){
+	s_prev = s.slice(0);
+
+	// console.log(s);
+
+	if(s.length >= 3){
+		var c = s.slice(0, 3);
+		if(dict.hasOwnProperty(c)){
+			out += dict[c];
+			s = s.slice(3);
+			index += 3;
+			continue;
+		}
+	}
+
+	if(s.length >= 2){
+		var c = s.slice(0, 2);
+		if(dict.hasOwnProperty(c)){
+			out += dict[c];
+			s = s.slice(2);
+			index += 2;
+			continue;
+		}
+	}
+	
+	if(s.length >= 1){
+		var c = s[0];
+		if(dict.hasOwnProperty(c)){
+			out += dict[c];
+			s = s.slice(1);
+			index += 1;
+		}
+	}
+
+	if(s.length == 0){
+		succeeded = true;
+		break;
+	}else if(s == s_prev){
+		break;
+	}
+}
+
+if(succeeded){
+	console.log(out);
+}else{
+	console.log(out);
+	console.error( "[エラー] " + (index+1) + "文字目("+s[0]+")が翻訳できませんでした。" );
+	process.exit(1);
+}
