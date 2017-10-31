@@ -83,6 +83,11 @@ const dict = {
 var args = process.argv.slice(2);
 // console.log(args);
 
+if(args.length < 1 || args[0] == '-h' || args[0] == '--help'){
+	console.error("Usage: kana2nums [hiragana]");
+	process.exit(1);
+}
+
 var kana = args[0];
 // console.log(kana);
 
