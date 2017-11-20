@@ -59,6 +59,15 @@ for entry in jmdict:
 				print_json_element(e2)
 
 				e3 = e.copy()
+				e3["vari"] = "sa"
+				if( kanji != None ):
+					e3["kanji"] = e3["kanji"] + "さ"
+				e3["hira"] += "さ"
+				e3["kana"] += "さ"
+				e3["nums"] += "3"
+				print_json_element(e3)
+
+				e3 = e.copy()
 				e3["vari"] = "yo"
 				if( kanji != None ):
 					e3["kanji"] = e3["kanji"] + "よ"
@@ -68,12 +77,12 @@ for entry in jmdict:
 				print_json_element(e3)
 
 				e3 = e.copy()
-				e3["vari"] = "sa"
+				e3["vari"] = "ga"
 				if( kanji != None ):
-					e3["kanji"] = e3["kanji"] + "さ"
-				e3["hira"] += "さ"
-				e3["kana"] += "さ"
-				e3["nums"] += "3"
+					e3["kanji"] = e3["kanji"] + "が"
+				e3["hira"] += "が"
+				e3["kana"] += "が"
+				e3["nums"] += "5"
 				print_json_element(e3)
 
 				e3 = e.copy()
