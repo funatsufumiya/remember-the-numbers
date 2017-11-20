@@ -42,6 +42,7 @@ const dict = {
 	"じゅー": 1,
 	"じょ": 4,
 	"つ": 2,
+	"てん": 10,
 	"と": 10,
 	"とっ": 10,
 	"とう": 10,
@@ -117,6 +118,7 @@ if(args.length < 1 || args[0] == '-h' || args[0] == '--help'){
 
 var kana = args[0];
 var is_ignore = false;
+var is_strict = false;
 // console.log(kana);
 
 if(args[0] == '-ignore' || args[0] == '--ignore'){
@@ -125,6 +127,12 @@ if(args[0] == '-ignore' || args[0] == '--ignore'){
 }else if(args[1] == '-ignore' || args[1] == '--ignore'){
 	kana = args[0];
 	is_ignore = true;
+}else if(args[0] == '-strict' || args[0] == '--strict'){
+	kana = args[1];
+	is_strict = true;
+}else if(args[1] == '-strict' || args[1] == '--strict'){
+	kana = args[0];
+	is_strict = true;
 }
 
 var out = "";
@@ -182,7 +190,11 @@ while(true){
 if(succeeded){
 	console.log(out);
 }else{
-	console.log(out);
-	console.error( "[エラー] " + (index+1) + "文字目("+s[0]+")が翻訳できませんでした。" );
-	process.exit(1);
+  if(is_strict){
+    process.exit(1);
+  }else{
+    console.log(out);
+    console.error( "[エラー] " + (index+1) + "文字目("+s[0]+")が翻訳できませんでした。" );
+    process.exit(1);
+  }
 }
