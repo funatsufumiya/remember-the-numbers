@@ -4,8 +4,10 @@ import json
 import jaconv
 from kana2nums import kana2nums
 
+import os.path
 
-f = open("../jmdict_lemma_single.json",'r',encoding="utf-8_sig")
+dirname = os.path.dirname(__file__)
+f = open(dirname + "/../data/dict/jmdict_lemma_single.json",'r',encoding="utf-8_sig")
 jmdict = json.load(f)
 f.close()
 
