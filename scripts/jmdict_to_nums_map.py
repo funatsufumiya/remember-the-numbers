@@ -49,12 +49,49 @@ for entry in jmdict:
 			count += 1
 
 			if "n" in pos:
-				e["vari"] = "1"
+				e2 = e.copy()
+				e2["vari"] = "ni"
 				if( kanji != None ):
-					e["kanji"] = e["kanji"] + "に"
-				e["hira"] += "に"
-				e["kana"] += "に"
-				e["nums"] += "2"
-				print_json_element(e)
+					e2["kanji"] = e2["kanji"] + "に"
+				e2["hira"] += "に"
+				e2["kana"] += "に"
+				e2["nums"] += "2"
+				print_json_element(e2)
+
+				e3 = e.copy()
+				e3["vari"] = "yo"
+				if( kanji != None ):
+					e3["kanji"] = e3["kanji"] + "よ"
+				e3["hira"] += "よ"
+				e3["kana"] += "よ"
+				e3["nums"] += "4"
+				print_json_element(e3)
+
+				e3 = e.copy()
+				e3["vari"] = "sa"
+				if( kanji != None ):
+					e3["kanji"] = e3["kanji"] + "さ"
+				e3["hira"] += "さ"
+				e3["kana"] += "さ"
+				e3["nums"] += "3"
+				print_json_element(e3)
+
+				e3 = e.copy()
+				e3["vari"] = "ha"
+				if( kanji != None ):
+					e3["kanji"] = e3["kanji"] + "は"
+				e3["hira"] += "は"
+				e3["kana"] += "は"
+				e3["nums"] += "8"
+				print_json_element(e3)
+
+				e3 = e.copy()
+				e3["vari"] = "wo"
+				if( kanji != None ):
+					e3["kanji"] = e3["kanji"] + "を"
+				e3["hira"] += "を"
+				e3["kana"] += "を"
+				e3["nums"] += "0"
+				print_json_element(e3)
 
 print("]")
