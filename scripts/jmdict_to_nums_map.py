@@ -90,6 +90,15 @@ for entry in jmdict:
 					print_json_element(e3)
 
 				e3 = e.copy()
+				e3["vari"] = "mo"
+				if( kanji != None ):
+					e3["kanji"] = e3["kanji"] + "も"
+				e3["hira"] += "も"
+				e3["kana"] += "も"
+				e3["nums"] += "6"
+				print_json_element(e3)
+
+				e3 = e.copy()
 				e3["vari"] = "ha"
 				if( kanji != None ):
 					e3["kanji"] = e3["kanji"] + "は"
@@ -107,6 +116,44 @@ for entry in jmdict:
 					e3["kana"] += "を"
 					e3["nums"] += "0"
 					print_json_element(e3)
+
+		 	# Verb variations
+			elif "v5k" in pos or "v5r" in pos or "v5m" in pos:
+				e2 = e.copy()
+				e2["vari"] = "na-verb"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "な"
+				e2["hira"] += "な"
+				e2["kana"] += "な"
+				e2["nums"] += "7"
+				print_json_element(e2)
+
+				e2 = e.copy()
+				e2["vari"] = "yo"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "よ"
+				e2["hira"] += "よ"
+				e2["kana"] += "よ"
+				e2["nums"] += "4"
+				print_json_element(e2)
+
+				e2 = e.copy()
+				e2["vari"] = "nayo"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "なよ"
+				e2["hira"] += "なよ"
+				e2["kana"] += "なよ"
+				e2["nums"] += "74"
+				print_json_element(e2)
+
+				e2 = e.copy()
+				e2["vari"] = "sa-verb"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "さ"
+				e2["hira"] += "さ"
+				e2["kana"] += "さ"
+				e2["nums"] += "3"
+				print_json_element(e2)
 
 			# Adj variations
 			if "adj-na" in pos:
@@ -127,6 +174,15 @@ for entry in jmdict:
 				e2["hira"] += "な"
 				e2["kana"] += "な"
 				e2["nums"] += "7"
+				print_json_element(e2)
+
+				e2 = e.copy()
+				e2["vari"] = "ga-adj"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "が"
+				e2["hira"] += "が"
+				e2["kana"] += "が"
+				e2["nums"] += "5"
 				print_json_element(e2)
 
 				e2 = e.copy()
