@@ -118,7 +118,7 @@ for entry in jmdict:
 					print_json_element(e3)
 
 		 	# Verb variations
-			elif "v5k" in pos or "v5r" in pos or "v5m" in pos:
+			elif "v5k" in pos or "v5r" in pos or "v5m" in pos or "vs-s" in pos:
 				e2 = e.copy()
 				e2["vari"] = "na-verb"
 				if( kanji != None ):
@@ -126,6 +126,15 @@ for entry in jmdict:
 				e2["hira"] += "な"
 				e2["kana"] += "な"
 				e2["nums"] += "7"
+				print_json_element(e2)
+
+				e2 = e.copy()
+				e2["vari"] = "mo-verb"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "も"
+				e2["hira"] += "も"
+				e2["kana"] += "も"
+				e2["nums"] += "6"
 				print_json_element(e2)
 
 				e2 = e.copy()
@@ -156,7 +165,7 @@ for entry in jmdict:
 				print_json_element(e2)
 
 			# Adj variations
-			if "adj-na" in pos:
+			if "adj-na" in pos or ("adv" in pos and not ("n" in pos)):
 				e2 = e.copy()
 				e2["vari"] = "na"
 				if( kanji != None ):
