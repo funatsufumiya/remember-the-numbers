@@ -48,6 +48,9 @@ for entry in jmdict:
 			print_json_element(e)
 			count += 1
 
+			# Add variations ----
+
+			# Noun variations
 			if "n" in pos:
 				e2 = e.copy()
 				e2["vari"] = "ni"
@@ -102,5 +105,17 @@ for entry in jmdict:
 				e3["kana"] += "を"
 				e3["nums"] += "0"
 				print_json_element(e3)
+
+			# Adj-na variations
+			if "adj-na" in pos:
+				e2 = e.copy()
+				e2["vari"] = "na"
+				if( kanji != None ):
+					e2["kanji"] = e2["kanji"] + "な"
+				e2["hira"] += "な"
+				e2["kana"] += "な"
+				e2["nums"] += "7"
+				print_json_element(e2)
+
 
 print("]")
