@@ -1,3 +1,4 @@
+!.gitkeep
 .DS_Store
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
@@ -6,6 +7,7 @@
 Session.vim
 .netrwhist
 tags
+/sql/*.sql
 
 
 ### https://raw.github.com/github/gitignore/6326792165078fc996146072cde72d42409191f0/python.gitignore
