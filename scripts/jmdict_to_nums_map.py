@@ -11,18 +11,30 @@ f = open(dirname + "/../data/dict/jmdict_lemma_single.json",'r',encoding="utf-8_
 jmdict = json.load(f)
 f.close()
 
+is_first_print = True
+
 def print_json_element(dic):
+	global is_first_print
+
 	d = dic
-	print( "{" )
+
+	if is_first_print:
+		print( "{" )
+		is_first_print = False
+	else:
+		print( ",{" )
+
 	if( d["kanji"] != None ):
 		print( '"kanji": "' + d["kanji"] + '",' )
 	print( '"nums": "' + d["nums"]  + '",' )
 	print( '"kana": "' + d["kana"] + '",' )
 	print( '"hira": "' + d["hira"] + '",' )
-	print( '"pos": ' + str(d["pos"]).replace("'", '"') + ',' )
 	if( "vari" in d ):
+		print( '"pos": ' + str(d["pos"]).replace("'", '"') + ',' )
 		print( '"vari": "' + d["vari"] + '"' )
-	print( "}," )
+	else:
+		print( '"pos": ' + str(d["pos"]).replace("'", '"') + '' )
+	print( "}" )
 
 print("[")
 

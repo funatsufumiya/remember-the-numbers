@@ -19,6 +19,29 @@ def typ_kana(typ):
 	elif typ == '町':
 		return 'まち'
 
+is_first_print = True
+def print_json_element(name, kana, nums, pos, vari=""):
+	global is_first_print
+
+	if is_first_print:
+		print( "{" )
+		is_first_print = False
+	else:
+		print( ",{" )
+	print( '"kanji": "' + name + '",' )
+	print( '"nums": "' + nums  + '",' )
+	print( '"kana": "' + kana + '",' )
+	print( '"hira": "' + kana + '",' )
+	if vari != "":
+		print( '"pos": ' + str(pos).replace("'", '"') + ',' )
+		print( '"vari": "' + vari  + '"' )
+	else:
+		print( '"pos": ' + str(pos).replace("'", '"') + '' )
+
+	print( "}" )
+
+print("[")
+
 count = 0
 for entry in jmdict:
 	if("kana" in entry):
@@ -28,11 +51,10 @@ for entry in jmdict:
 		pos = ["n"]
 		nums = kana2nums(kana)
 		if(nums != None):
-			print( "{" )
-			print( '"kanji": "' + name + '",' )
-			print( '"kana": "' + kana + '",' )
-			print( '"hira": "' + kana + '",' )
-			print( '"pos": ' + str(pos).replace("'", '"') + ',' )
-			print( '"nums": "' + nums  + '"' )
-			print( "}," )
+			print_json_element(name, kana, nums, pos)
+			print_json_element(name+"に", kana+"に", nums+"2", pos, "ni")
+			print_json_element(name+"が", kana+"が", nums+"5", pos, "ga")
+			print_json_element(name+"を", kana+"を", nums+"0", pos, "wo")
 			count += 1
+
+print("]")
